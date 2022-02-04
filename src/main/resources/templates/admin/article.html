@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<header th:replace="admin/header::header-fragment"></header>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+    <!-- 引入页面头header-fragment -->
+    <div th:replace="admin/header::header-nav"></div>
+    <!-- 引入工具栏sidebar-fragment -->
+    <div th:replace="admin/sidebar::sidebar-fragment(${path})"></div>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- Main content -->
+        <div class="col-md-12">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    新增博文
+                </div>
+                <div class="panel-body">
+                    <form action="#" th:action="@{uploadcontent}" th:object="${article}" method="post">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>文章标题:</label>
+                                <input th:type="text" class="form-control" id="addArticleTitle" th:field="${article.title}">
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                        <div class="col-md-12">
+                            <label class="control-label">请选择分类:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                            <select class="form-control col-sm-3" th:field = "${article.category}" th:value="${article.category}" name="level" lay-verify = "required">
+                                <option value="">请选择类别</option>
+                                <option th:selected = "${article.category}=='分类1'" value="分类1">分类1</option>
+                                <option th:selected = "${article.category}=='分类2'" value="分类2">分类2</option>
+                                <option th:selected = "${article.category}=='分类3'" value="分类3">分类3</option>
+                                <option th:selected = "${article.category}=='分类4'" value="分类4">分类4</option>
+                                <option th:selected = "${article.category}=='分类5'" value="分类5">分类5</option>
+                            </select>
+                        </div></div>
+                        <!-- /. END ROW -->
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>文章内容</label>
+                                <textarea th:type="value" id="editor" name="editor" class="form-control" rows="12"
+                                          th:field="${article.content}">
+                                </textarea>
+                            </div>
+                        </div>
+                        <br/>
+                        <!-- /. END ROW -->
+                        <div class="row">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4 text-center">
+                                <button th:type="submit" id="addArticleBtn" class="form-control btn btn-success">确认添加
+                                </button>
+                            </div>
+                            <div class="col-md-4"></div>
+                        </div>
+                        <!-- /. END ROW -->
+                    </form>
+                </div>
+            </div>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+    </div>
+</div>
+<!-- jQuery -->
+<script th:src="@{/admin/plugins/jquery/jquery.js}"></script>
+<!-- Bootstrap 4 -->
+<script th:src="@{/admin/plugins/bootstrap/js/bootstrap.bundle.js}"></script>
+<!-- AdminLTE App -->
+<script th:src="@{/admin/dist/js/adminlte.js}"></script>
+<!-- public.js -->
+<script th:src="@{/admin/dist/js/public.js}"></script>
+<!-- profile -->
+<script th:src="@{/admin/dist/js/profile.js}"></script>
+
+<script th:src="@{/admin/plugins/kindeditor/kindeditor-all-min.js}"></script>
+<script th:src="@{/admin/plugins/kindeditor/lang/zh-CN.js}"></script>
+
+<script type="text/javascript">
+    var editor;
+    editor = KindEditor.create('textarea[id="editor"]', {
+        allowFileManager : true,
+        uploadJson : '<%=path%>/tIg/uploadOK',
+        afterUpload: function(){this.sync();}, //图片上传后，将上传内容同步到textarea中
+        afterBlur: function(){this.sync();},   //失去焦点时，将上传内容同步到textarea中
+        items: ['source', '|', 'undo', 'redo', '|', 'preview', 'print', 'template', 'code', 'cut', 'copy', 'paste',
+            'plainpaste', 'wordpaste', '|', 'justifyleft', 'justifycenter', 'justifyright',
+            'justifyfull', 'insertorderedlist', 'insertunorderedlist', 'indent', 'outdent', 'subscript',
+            'superscript', 'clearhtml', 'quickformat', 'selectall', '|', 'fullscreen', '/',
+            'formatblock', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold',
+            'italic', 'underline', 'strikethrough', 'lineheight', 'removeformat', '|', 'image',
+            'table', 'hr', 'emoticons', 'baidumap', 'pagebreak',
+            'anchor', 'link', 'unlink'],
+        // uploadJson: '/admin/upload/file',
+        // filePostName: 'file'
+    });
+</script>
+</body>
+</html>

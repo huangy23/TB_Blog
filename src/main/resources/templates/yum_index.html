@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<div th:replace="blog/header::header('首页','My Blog')"></div>
+
+<body>
+<div class="content">
+    <section class="jumbotron">
+        <div class="container">
+            <h3>Out in nature I can be seen, I don't fall from an evergreen</h3>
+        </div>
+    </section>
+    <section class="content container">
+
+        <div class="row">
+            <!-- Post List -->
+            <div class="col-md-8">
+                <ol class="post-list">
+
+                        <th:block th:each="aa:${Article}">
+                            <li class="post-list-item">
+                                <h3 class="post-list-title">
+                                    <a class="hvr-underline-from-center" th:href="${aa.link}">
+                                        <th:block th:text="${aa.title}"></th:block>
+                                    </a>
+                                </h3>
+
+                                <p class="post-list-meta">
+                                    <span class="octicon octicon-calendar"
+                                          th:text="${aa.pubtime}"></span>
+                                </p>
+                            </li>
+                        </th:block>
+
+                </ol>
+
+                <!-- Pagination -->
+                <div class="pagination">
+                    <td th:if="${previous_p} ne null">
+                        <a th:href="${previous_p}" class="prev-link router-link-active">← Previous</a>
+                    </td>
+
+                    <td th:if="${next_p} ne null">
+                        <a th:href="${next_p}" class="next-link router-link-active">Next →</a>
+                    </td>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+</div>
+</body>
+</html>

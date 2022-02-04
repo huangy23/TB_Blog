@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>布洛克</title>
+
+</head>
+<body>
+
+<div id="_saber" data-server-rendered="true">
+    <div>
+        <header class="site-header">
+            <div class="wrapper">
+                <nav class="site-nav"><input type="checkbox" id="nav-trigger" class="nav-trigger">
+                    <div class="trigger"><a href="/" class="page-link">Home</a>
+                        <a href="/about" class="page-link">About</a>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <main aria-label="Content" class="page-content">
+            <div class="wrapper">
+                <div class="home">
+                    <h2 class="post-list-heading">Posts</h2>
+
+                    <ul th:each="aa:${Article}">
+                        <li><span class="post-meta"><td th:text = "${aa.pubtime}"></td></span>
+                            <h3><a th:href="${aa.link}"><td th:text = "${aa.title}"></td></a>
+                            </h3>
+                        </li>
+                    </ul>
+
+                    <div class="pagination">
+                        <td th:if="${previous_p} ne null">
+                            <a th:href="${previous_p}" class="prev-link router-link-active">← Previous</a>
+                        </td>
+
+                        <td th:if="${next_p} ne null">
+                            <a th:href="${next_p}" class="next-link router-link-active">Next →</a>
+                        </td>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="site-footer h-card">
+            <div class="wrapper">
+                <div class="footer-col-wrapper">
+                    <div class="footer-col one-half"><h2 class="footer-heading">Blog</h2>
+                        <ul class="contact-list">
+                            <li class="p-name">Name</li>
+                            <li><a href="mailto:aaa@aaa.com" class="u-email">aaa@aaa.com</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col one-half"><p>Blog</p></div>
+                    <div class="social-links"></div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/homeofnever/blog@gh-pages/_saber/js/client.b10b662f.js" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/homeofnever/blog@gh-pages/_saber/js/page--index-md.77d7993f.js" defer></script>
+<!-- Bootstrap 4 -->
+<script src="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.5.3/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/particles.js/2.0.0/particles.js"></script>
+</body>
+</html>
