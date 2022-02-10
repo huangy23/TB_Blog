@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 
 @SpringBootApplication
-@MapperScan("com.treebee.blog.dao") //添加 @Mapper 注解
+@MapperScan("com.treebee.blog.dao") //添加 @Mapper
 @EnableCaching
 public class Demo6Application {
 
