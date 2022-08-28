@@ -8,7 +8,7 @@ There is no online demo but here is a screen shot of the homepage.
 #### Front blog
 ![content](https://github.com/huangy23/TB_Blog/blob/master/png/b0.png)
 
-#### 后端效果
+#### Back blog system
 
 ![index](https://github.com/huangy23/TB_Blog/blob/master/png/b8.png)
 
